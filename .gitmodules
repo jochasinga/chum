@@ -1,0 +1,4 @@
+[submodules "rts"]
+            path = "rts"
+            url = "git@github.com:jochasinga/chum-runtime.git"
+            
