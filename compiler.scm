@@ -86,7 +86,17 @@
     ((+)
      (compile-expr (primitive-op-arg1 form))
      (compile-expr (primitive-op-arg2 form))
-     (emit "    i32.add"))))
+     (emit "    i32.add"))
+    ((-)
+     (compile-expr (primitive-op-arg1 form))
+     (compile-expr (primitive-op-arg2 form))
+     (emit "    i32.sub"))
+    ((*)
+     (compile-expr (primitive-op-arg1 form))
+     (compile-expr (primitive-op-arg2 form))
+     (emit "    i32.const ~a" fixnum-shift)
+     (emit "    i32.shr_u")
+     (emit "    i32.mul"))))
 
 
 (define (compile-program program)
