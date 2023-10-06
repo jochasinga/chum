@@ -82,7 +82,12 @@
     ; zero? - check whether the first arg is zero
     ((zero?)
      (compile-expr (primitive-op-arg1 form))
-     (emit-is-equal-to 0))))
+     (emit-is-equal-to 0))
+    ((+)
+     (compile-expr (primitive-op-arg1 form))
+     (compile-expr (primitive-op-arg2 form))
+     (emit "    i32.add"))))
+
 
 (define (compile-program program)
   (emit "(module")
