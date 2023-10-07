@@ -1,6 +1,36 @@
 (module
   (type $t0 (func (param i32 i32) (result i32)))
   (type $t1 (func (param i32 i32) (result i32)))
+  (func $setl (export "setl") (param $cmpl_flag i32) (param $val i32) (result i32)
+    (local $var i32)
+    local.get $cmpl_flag
+    i32.const 0
+	  i32.lt_s
+    (if
+    	(then
+        local.get $cmpl_flag
+    		i32.const 1
+    		i32.and
+        local.set $var
+      )
+      (else
+        local.get $cmpl_flag
+        i32.const 0
+        i32.and
+        local.set $var
+      )
+    )
+    local.get $var
+    (if
+      (then
+        local.get $val
+        i32.const 0xff
+        i32.or
+        return
+      )
+    )
+    local.get $val
+  )
   (func $sete (export "sete") (param $zf i32) (param $val i32) (result i32)
     ;; - arg0 | $zf is the zero flag
     ;; - arg1 | $val is the value to set

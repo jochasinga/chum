@@ -1,6 +1,31 @@
 (module
   (import "asm_x86" "sete" (func $sete (param i32 i32) (result i32)))
   (import "asm_x86" "cmpl" (func $cmpl (param i32 i32) (result i32)))
+  (import "asm_x86" "setl" (func $setl (param i32 i32) (result i32)))
+  (func $test_setl_eq (export "test_setl_eq") (result i32)
+    i32.const 3
+    i32.const 3
+    ;; 3 == 3 so setl should return 0
+    call $cmpl
+    i32.const 0
+    call $setl
+  )
+  (func $test_setl_mt (export "test_setl_mt") (result i32)
+    i32.const 4
+    i32.const 3
+    ;; 4 > 3 so setl should return 0
+    call $cmpl
+    i32.const 0
+    call $setl
+  )
+  (func $test_setl_lt (export "test_setl_lt") (result i32)
+    i32.const 1
+    i32.const 3
+    ;; 1 < 3 so setl should return 255
+    call $cmpl
+    i32.const 0
+    call $setl
+  )
   (func $test_sete_eq (export "test_sete_eq") (result i32)
     i32.const 3
     i32.const 3
