@@ -52,13 +52,13 @@ Helper functions written in WAT.
 
 ## movitation
 
-I started coding from literature, thus writing computer code has been nothing short of writing a novel for computers. Writing a compiler for a programming language is one of my programming epitaphs.
+I started coding from literature, thus writing computer code has been nothing short of writing a novel for computers. Writing a compiler for a programming language is one of my programming epitaphs I've always wanted the time to work on.
 
 Lisp (and in effect, Scheme) is, in my opinion, the most expressive computer language humanity has ever created.
 
 Moreover, the [homoiconicity](https://en.wikipedia.org/wiki/Homoiconicity#:~:text=A%20language%20is%20homoiconic%20if,language%20treats%20code%20as%20data.)<sup>1</sup> of Lisp makes it possible to skip the parsing process of a compiler.
 
-This project is also overwhelming inspired by [An Incremental Approach to Compiler Construction](http://scheme2006.cs.uchicago.edu/11-ghuloum.pdf)<sup>2</sup> and [Let's Build a Compiler Series](https://generalproblem.net/lets_build_a_compiler/01-starting-out/)<sup>3</sup>.
+This project is also overwhelmingly inspired by [An Incremental Approach to Compiler Construction](http://scheme2006.cs.uchicago.edu/11-ghuloum.pdf)<sup>2</sup> and [Let's Build a Compiler Series](https://generalproblem.net/lets_build_a_compiler/01-starting-out/)<sup>3</sup>.
 
 > 1) I wish we could stop linking Wikipedia. It's at the point where it's just downright scaring learners away.
 > 2) An Incremental Approach to Compiler Construction, Abdulazia Ghuloum
