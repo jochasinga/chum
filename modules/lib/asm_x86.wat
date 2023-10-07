@@ -28,4 +28,42 @@
     local.get $by
     i32.shl
   )
+  (func $cmpl (export "cmpl") (param $a i32) (param $b i32) (result i32)
+    ;; - arg0 | $a is the first value
+    ;; - arg1 | $b is the second value
+
+    ;; compare two 32 bit signed integers.
+    ;; return 1 if $a > $b
+    ;; return 0 if $a == $b
+    ;; return -1 if $a < $b
+    (local $diff i32)
+    local.get $a
+    local.get $b
+    i32.sub
+    local.set $diff
+    local.get $diff
+    i32.eqz
+    (if
+      (then
+        i32.const 0
+        return
+      )
+      (else
+        local.get $diff
+        i32.const 0
+        i32.gt_s
+        (if
+          (then
+            i32.const 1
+            return
+          )
+          (else
+            i32.const -1
+            return
+          )
+        )
+      )
+    )
+    i32.const 0
+  )
 )
