@@ -96,7 +96,17 @@
      (compile-expr (primitive-op-arg2 form))
      (emit "    i32.const ~a" fixnum-shift)
      (emit "    i32.shr_u")
-     (emit "    i32.mul"))))
+     (emit "    i32.mul"))
+    ((=)
+     (compile-expr (primitive-op-arg1 form))
+     (compile-expr (primitive-op-arg2 form))
+     (emit "    i32.eq")
+     (emit "    i32.const 0")
+     (emit "    call $sete")
+     (emit "    i32.const ~a" bool-shift)
+     (emit "    i32.shl")
+     (emit "    i32.const ~a" bool-tag)
+     (emit "    i32.or"))))
 
 
 (define (compile-program program)
