@@ -16,12 +16,14 @@ $ guile
 > Enter `,help' for help.
 > scheme@(guile-user)> (load "compiler.scm")
 > scheme@(guile-user)> (compile-and-run '(primcall integer? 3))
-> #t
+>> #t
+> scheme@(guile-user)> (compile-and-run '(primcall + 3 2))
+>> int: 5
 ```
 
-Instead of compiling to x86 Assembly, chum compiles to hand-rolled a WAT program.
+Instead of compiling to x86 Assembly, chum compiles to hand-rolled WAT program and gets executed by the [runtime](https://github.com/jochasinga/chum-runtime).
 
-Running `compile-to-wasm` procedure will compile an expression to a corresponding WAT in `modules/compiled.wat`.
+Running `compile-to-wasm` procedure will compile an expression to a corresponding WAT in `modules/compiled.wat` without compiling to WASM binary and running.
 
 ```shell
 > scheme@(guile-user)> (load "compiler.scm")
@@ -33,7 +35,7 @@ To invoke the runtime, run `compile-and-run`:
 ```shell
 > scheme@(guile-user)> (load "compiler.scm")
 > scheme@(guile-user)> (compile-and-run #\a)
-> char: a
+>> char: a
 ```
 
 ## components
