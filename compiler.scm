@@ -116,6 +116,23 @@
      (emit "    i32.const ~a" bool-shift)
      (emit "    i32.shl")
      (emit "    i32.const ~a" bool-tag)
+     (emit "    i32.or"))
+    ((char=?)
+     ;; Get the first character arg
+     (compile-expr (primitive-op-arg1 form))
+     ;; Convert to the real character binary value
+     (emit "    i32.const ~a" char-shift)
+     (emit "    i32.shr_u")
+     ;; Get the second character arg
+     (compile-expr (primitive-op-arg2 form))
+     (emit "    i32.const ~a" char-shift)
+     (emit "    i32.shr_u")
+     (emit "    i32.eq")
+     (emit "    i32.const 0")
+     (emit "    call $sete")
+     (emit "    i32.const ~a" bool-shift)
+     (emit "    i32.shl")
+     (emit "    i32.const ~a" bool-tag)
      (emit "    i32.or"))))
 
 
