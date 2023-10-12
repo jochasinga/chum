@@ -166,6 +166,10 @@
     ; (system "cargo run --release --bin wasm-compile rts/modules/compiled.wat modules/out.wat")
     (system "/Users/pancy/Code/practical-webassembly/wabt/bin/wat2wasm modules/compiled.wat -o bin/compiled.wasm")))
 
+(define (compile-to-binary program)
+  (begin (compile-to-wasm program)
+         (system "cd rts; cargo build")))
+
 (define (compile-and-run program)
   (begin (compile-to-wasm program)
     (system "cd rts; cargo run")))
